@@ -7,7 +7,7 @@ export function getMultidata(){
     //返回一整个大的对象
     console.log(result);
     //现在只返回banner的数据
-    return result.data.data.banner
+    return result
   }).catch(error =>{
 
   })
