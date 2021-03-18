@@ -70,6 +70,6 @@ export default {
 }
 
 .active {
-  color: #FE6A86;
+  color: var(--color-high-text);
 }
 </style>
