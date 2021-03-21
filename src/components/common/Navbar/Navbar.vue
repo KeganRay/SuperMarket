@@ -18,7 +18,6 @@ export default {
   height: 44px;
   line-height: 44px;
   text-align: center;
-  background-color: #FE6A86;
 }
 
 .left, .right {

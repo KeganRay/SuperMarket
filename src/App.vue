@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <!--因为每次去到detail都是请求新的数据，要重新执行请求数据所以要除了detail-->
+    <keep-alive exclude="Detail">
+      <router-view></router-view>
+    </keep-alive>
+
     <MainTabBar></MainTabBar>
   </div>
 </template>
@@ -16,6 +20,6 @@ export default {
 }
 </script>
 <style>
-  @import "assets/css/base.css";
-  @import "assets/css/normalize.css";
+@import "assets/css/base.css";
+@import "assets/css/normalize.css";
 </style>

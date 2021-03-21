@@ -1,6 +1,6 @@
 <template>
-  <div class="GoodsItem">
-    <img :src="GoodsItem.show.img" alt="">
+  <div class="GoodsItem" @click="itemClick">
+    <img :src="GoodsItem.show.img" alt="" @load="imgload">
     <div class="Goods-info">
       <p>{{ GoodsItem.title }}</p>
       <span class="price">${{ GoodsItem.price }}</span>
@@ -20,6 +20,16 @@ export default {
       default() {
         return {}
       }
+    }
+  },
+  methods:{
+    //图片加载完成发射事件出去home.vue
+    imgload(){
+      this.$bus.$emit('imgload');
+    },
+    itemClick(){
+      //改变网页
+      this.$router.push('/detail/' + this.GoodsItem.iid)//给URL拼接上这个详情页面对象里面的id
     }
   }
 }

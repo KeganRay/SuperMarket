@@ -30,12 +30,19 @@ export default {
   methods: {
     //监听回到顶部的点击
     backtotop(x, y, time = 300) {
-      this.scroll.scrollTo(x, y, time)
+      //只有拿到scroll对象才会执行后面的函数，增加严谨性
+      this.scroll && this.scroll.scrollTo(x, y, time)
     },
     //监听完成加载更多
-    finishPullUp(){
+    finishPullUp() {
       this.scroll.finishPullUp()
-    }
+    },
+    //监听图片加载完成要重新刷新界面
+    refresh() {
+      this.scroll && this.scroll.refresh()
+
+    },
+
   },
   mounted() {
     //1、当组件挂在完马上创建一个betterscroll对象
@@ -50,9 +57,15 @@ export default {
       this.$emit('scrolling', position)
     })
     //3、监听加载更多
-    this.scroll.on('pullingUp',()=>{
+    this.scroll.on('pullingUp', () => {
       this.$emit('loadmore')
     })
+  },
+  computed:{
+    getScrollY() {
+      // console.log(this.scroll.y);
+      return this.scroll.y
+    }
   }
 }
 </script>
